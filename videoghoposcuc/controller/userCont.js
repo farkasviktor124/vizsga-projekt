@@ -14,10 +14,10 @@ export const getUsers = async (req, res) => {
 
 // POST - új felhasználó létrehozása
 export const creUsers = async (req, res) => {
-  const { Vezeteknev, Keresztnev, Email, Iranyitoszam, Telefonszam, Lakcim } = req.body;
+  const { Vezeteknev, Keresztnev, Email, Iranyitoszam, Telefonszam, Lakcim, Jelszo } = req.body;
   try {
-    const newUser = await prisma.customers_id.create({
-      data: { Vezeteknev, Keresztnev, Email, Iranyitoszam, Telefonszam, Lakcim }
+    const newUser = await prisma.felhasznalok.create({
+      data: { Vezeteknev, Keresztnev, Email, Iranyitoszam, Telefonszam, Lakcim, Jelszo }
     });
     res.json({ message: "Felhasználó létrehozva haver srác", newUser });
   } catch (error) {
@@ -54,15 +54,22 @@ export const updUser = async (req, res) => {
   }
 };
 
-
-
 // DELETE - felhasználó törlése
 export const delUser = async (req, res) => {
   const { id } = req.params;
 
   try {
+    // Ellenőrzés: létezik-e a felhasználó
+    const existingUser = await prisma.felhasznalok.findUnique({
+      where: { ID: Number(id) }
+    });
+
+    if (!existingUser) {
+      return res.status(404).json({ error: `Nincs ilyen felhasználó: ID ${id}` });
+    }
+
     const deletedUser = await prisma.felhasznalok.delete({
-      where: { id: Number(id) }
+      where: { ID: Number(id) }
     });
     res.json({ message: "Felhasználó törölve lett tesó", deletedUser });
   } catch (error) {
