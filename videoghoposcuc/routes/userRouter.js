@@ -1,12 +1,11 @@
 import express from 'express';
-import { getUsers } from '../controller/userCont.js';
-import { updUser } from '../controller/userCont.js';
-import { creUsers } from '../controller/userCont.js';
+import { getUsers, creUsers, updUser, delUser } from '../controller/userCont.js';
 
 const router = express.Router();
 
-// GET /api/users → összes felhasználó lekérése
-router.get('/all', getUsers);
-router.patch('/:id',updUser);
-router.put('/create',creUsers);
+router.get('/users', getUsers);
+router.post('/users', creUsers);
+router.put('/users/:id', updUser);
+router.delete('/users/:id', delUser);
+
 export default router;
