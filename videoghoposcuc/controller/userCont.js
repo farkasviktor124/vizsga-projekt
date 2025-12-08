@@ -1,58 +1,72 @@
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
+// GET - összes felhasználó
 export const getUsers = async (req, res) => {
   try {
-    const users = await prisma.felhasznalok.findMany({})
-    
+    const users = await prisma.felhasznalok.findMany({});
     res.json(users);
   } catch (error) {
     console.error('Prisma error:', error);
     res.status(500).json({ error: 'Failed to fetch users' });
   }
 };
-export const updUser = async (req,res)=>{
-  const {id}= req.params;
-  const{Email , Iranyitoszam , Varos , Lakcim , Jelszo} = req.body;
- try {
-    await prisma.felhasznalok.update({
-      where:{
-        id:Number(id)   
-      },
-      data:{
-          Email: Email,
-          Iranyitoszam: Iranyitoszam,
-          Varos: Varos,
-          Lakcim:Lakcim,
-          Jelszo:Jelszo
-      }
-    })
-    res.json("Adatok frisitve lettek öcsi pók")
- } catch (error) {
-  console.error("Error updating:", error);
- }
 
-}
-
+// POST - új felhasználó létrehozása
 export const creUsers = async (req, res) => {
+  const { Vezeteknev, Keresztnev, Email, Iranyitoszam, Telefonszam, Lakcim } = req.body;
+  try {
+    const newUser = await prisma.customers_id.create({
+      data: { Vezeteknev, Keresztnev, Email, Iranyitoszam, Telefonszam, Lakcim }
+    });
+    res.json({ message: "Felhasználó létrehozva haver srác", newUser });
+  } catch (error) {
+    console.error("Error creating:", error);
+    res.status(500).json({ error: "Failed to create user" });
+  }
+};
 
-    const { Vezeteknev, Keresztnev, Email, Iranyitoszam, Telefonszam, Lakcim } = req.body;
-    try {
-        const newCos = await prisma.customers_id.create({
-            data: {
-              Vezeteknev: Vezeteknev,
-              Keresztnev: Keresztnev,
-              Email: Email,
-              Iranyitoszam: Iranyitoszam,
-              Telefonszam: Telefonszam,
-              Lakcim: Lakcim
-               
-            }
+// PUT - meglévő felhasználó frissítése
+export const updUser = async (req, res) => {
+  const { id } = req.params;
+  const { Email, Iranyitoszam, Varos, Lakcim, Jelszo } = req.body;
 
-        });
-        res.json("Flhasználó létrehozva haver srác");
-    } catch (error) {
-        console.error("Error creating:", error);
+  try {
+    // Ellenőrzés: létezik-e a felhasználó
+    const existingUser = await prisma.felhasznalok.findUnique({
+      where: { ID: Number(id) }
+    });
+
+    if (!existingUser) {
+      return res.status(404).json({ error: `Nincs ilyen felhasználó: ID ${id}` });
     }
- }
 
+    // Frissítés
+    const updatedUser = await prisma.felhasznalok.update({
+      where: { ID: Number(id) },
+      data: { Email, Iranyitoszam, Varos, Lakcim, Jelszo }
+    });
+
+    res.json({ message: "Adatok frissítve lettek öcsi pók", updatedUser });
+  } catch (error) {
+    console.error("Error updating:", error);
+    res.status(500).json({ error: "Failed to update user" });
+  }
+};
+
+
+
+// DELETE - felhasználó törlése
+export const delUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedUser = await prisma.felhasznalok.delete({
+      where: { id: Number(id) }
+    });
+    res.json({ message: "Felhasználó törölve lett tesó", deletedUser });
+  } catch (error) {
+    console.error("Error deleting:", error);
+    res.status(500).json({ error: "Failed to delete user" });
+  }
+};
