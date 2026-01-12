@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model felhasznalok {
+  ID            Int            @id @default(autoincrement())
+  Email         String         @unique(map: "Email") @db.VarChar(255)
+  Vezeteknev    String         @db.VarChar(100)
+  Keresztnev    String         @db.VarChar(100)
+  Iranyitoszam  String?        @db.VarChar(10)
+  Varos         String?        @db.VarChar(100)
+  Lakcim        String?        @db.VarChar(255)
+  Jelszo        String         @db.VarChar(255)
+  Jogosultsag   Int?
+  jogosultsagok jogosultsagok? @relation(fields: [Jogosultsag], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "felhasznalok_ibfk_1")
+  hirdetes      hirdetes[]
+  velem_nyek    velem_nyek[]
+
+  @@index([Jogosultsag], map: "Jogosultsag")
+  @@index([Email], map: "idx_felhasznalo_email")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model hirdetes {
+  id            Int           @id @default(autoincrement())
+  Cim           String        @db.VarChar(255)
+  leiras        String?       @db.Text
+  allapot       String?       @db.VarChar(50)
+  FelhasznaloID Int?
+  TermekID      Int?
+  felhasznalok  felhasznalok? @relation(fields: [FelhasznaloID], references: [ID], onDelete: Restrict, onUpdate: Restrict, map: "hirdetes_ibfk_1")
+  termekek      termekek?     @relation(fields: [TermekID], references: [Id], onDelete: Restrict, onUpdate: Restrict, map: "hirdetes_ibfk_2")
+  kepek         kepek[]
+  velem_nyek    velem_nyek[]
+
+  @@index([FelhasznaloID], map: "FelhasznaloID")
+  @@index([TermekID], map: "TermekID")
+  @@index([Cim], map: "idx_hirdetes_cim")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model jogosultsagok {
+  id           Int            @id @default(autoincrement())
+  nev          String         @db.VarChar(100)
+  leiras       String?        @db.Text
+  felhasznalok felhasznalok[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model kepek {
+  id         Int      @id @default(autoincrement())
+  HirdetesID Int
+  kep_url    String   @db.VarChar(500)
+  kep_nev    String?  @db.VarChar(255)
+  hirdetes   hirdetes @relation(fields: [HirdetesID], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "kepek_ibfk_1")
+
+  @@index([HirdetesID], map: "HirdetesID")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model termekek {
+  Id       Int        @id @default(autoincrement())
+  Nev      String     @db.VarChar(255)
+  Allapot  String?    @db.VarChar(50)
+  Evjarat  Int?
+  Gyarto   String?    @db.VarChar(100)
+  AR       Decimal?   @db.Decimal(10, 2)
+  hirdetes hirdetes[]
+
+  @@index([Nev], map: "idx_termek_nev")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model velem_nyek {
+  id            Int           @id @default(autoincrement())
+  Datum         DateTime?     @default(now()) @db.DateTime(0)
+  Szoveg        String        @db.Text
+  Ertekeles     Int?
+  FelhasznaloID Int?
+  HirdetesID    Int?
+  felhasznalok  felhasznalok? @relation(fields: [FelhasznaloID], references: [ID], onDelete: Restrict, onUpdate: Restrict, map: "velemények_ibfk_1")
+  hirdetes      hirdetes?     @relation(fields: [HirdetesID], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "velemények_ibfk_2")
+
+  @@index([FelhasznaloID], map: "FelhasznaloID")
+  @@index([HirdetesID], map: "HirdetesID")
+  @@index([Datum], map: "idx_velemeny_datum")
+  @@map("velemények")
+}
