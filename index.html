@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>RetroGshop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="title">
+        <h1>🖥️ RetroGshop</h1>
+        <h5 id="smoltitle">A retro és modern technológia találkozása!</h5>
+        <button id="cartBtn">🛒 Kosár (<span id="cartCount">0</span>)</button>
+    </div>
+</header>
+
+<main id="productGrid">
+  <div class="product" onclick="openProduct(1)">
+    <img src="images/1416637426.msi-cyborg-15-a13vf-1816-9s7-15k111-1816.jpg">
+    <h3>MSI Cyborg 15 Gaming Laptop</h3>
+    <p>499 990 Ft</p>
+  </div>
+
+  <div class="product" onclick="openProduct(2)">
+    <img src="images/res_c7cea2fd64f0ba2390b54ee1a4a0a5ec.png">
+    <h3>RTX 4070 Ti Super Videókártya</h3>
+    <p>249 990 Ft</p>
+  </div>
+
+  <div class="product" onclick="openProduct(3)">
+    <img src="images/ProductImage_GATA-2679_01_06a58eb77a80f6c01476dedb8a28ebb3.jpg">
+    <h3>Corsair Mechanikus billentyűzet</h3>
+    <p>39 990 Ft</p>
+  </div>
+</main>
+
+<!-- TERMÉK OLDAL -->
+<section id="productPage" class="hidden">
+  <button class="back" onclick="goBack()">⬅ Vissza</button>
+
+  <div class="product-detail">
+    <img id="detailImg">
+    <div>
+      <h2 id="detailName"></h2>
+      <p id="detailPrice"></p>
+      <p>Erőteljes, modern hardver játékhoz és munkához.</p>
+      <button onclick="addToCart()">🛒 Kosárba</button>
+      <button class="pay">💳 Fizetés</button>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
