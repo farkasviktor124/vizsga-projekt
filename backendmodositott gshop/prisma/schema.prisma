@@ -6,7 +6,7 @@ datasource db {
   provider = "mysql"
 }
 
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+
 model felhasznalok {
   ID            Int            @id @default(autoincrement())
   Email         String         @unique(map: "Email") @db.VarChar(255)
@@ -25,7 +25,7 @@ model felhasznalok {
   @@index([Email], map: "idx_felhasznalo_email")
 }
 
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+
 model hirdetes {
   id            Int           @id @default(autoincrement())
   Cim           String        @db.VarChar(255)
@@ -43,7 +43,7 @@ model hirdetes {
   @@index([Cim], map: "idx_hirdetes_cim")
 }
 
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+
 model jogosultsagok {
   id           Int            @id @default(autoincrement())
   nev          String         @db.VarChar(100)
@@ -51,7 +51,7 @@ model jogosultsagok {
   felhasznalok felhasznalok[]
 }
 
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ts
 model kepek {
   id         Int      @id @default(autoincrement())
   HirdetesID Int
@@ -62,7 +62,7 @@ model kepek {
   @@index([HirdetesID], map: "HirdetesID")
 }
 
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+
 model termekek {
   Id       Int        @id @default(autoincrement())
   Nev      String     @db.VarChar(255)
@@ -75,7 +75,7 @@ model termekek {
   @@index([Nev], map: "idx_termek_nev")
 }
 
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+
 model velem_nyek {
   id            Int           @id @default(autoincrement())
   Datum         DateTime?     @default(now()) @db.DateTime(0)
