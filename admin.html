@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - RetroGshop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Admin felület</h1>
+    <a href="logout.php">Kijelentkezés</a>
+    <h2>Feltöltött termékek kezelése</h2>
+    <div id="adminProducts"></div>
+
+    <script>
+        fetch("api/getProducts.php")
+        .then(res => res.json())
+        .then(products => {
+            const container = document.getElementById("adminProducts");
+            products.forEach(p => {
+                container.innerHTML += `
+                    <div class="admin-product">
+                        <h3>${p.name}</h3>
+                        <p>${p.price} Ft</p>
+                        <button onclick="deleteProduct(${p.id})">Törlés</button>
+                        <button onclick="editProduct(${p.id})">Módosítás</button>
+                    </div>
+                `;
+            });
+        });
+
+        function deleteProduct(id) {
+            if(confirm("Biztosan törölni akarod a terméket?")) {
+                fetch(`api/deleteProduct.php?id=${id}`)
+                .then(() => location.reload());
+            }
+        }
+
+        function editProduct(id) {
+            alert("Edit funkció még nincs implementálva.");
+        }
+    </script>
+</body>
+</html>

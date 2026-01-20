@@ -9,11 +9,47 @@
 
 <header>
     <div class="title">
-        <h1>🖥️ RetroGshop</h1>
+        <h1> RetroGshop</h1>
         <h5 id="smoltitle">A retro és modern technológia találkozása!</h5>
-        <button id="cartBtn">🛒 Kosár (<span id="cartCount">0</span>)</button>
+        <button id="cartBtn"> Kosár (<span id="cartCount">0</span>)</button>
+        <button id="authBtn">Bejelentkezés / Regisztráció</button>
     </div>
+
+    <div id="userMenu" class="hidden">
+      <span id="usernameDisplay"></span>
+      <button id="logoutBtn">Kijelentkezés</button>
+    </div>
+  </div>
 </header>
+</header>
+
+<div id="authModal" class="hidden">
+  <div class="modalContent">
+
+    <button id="closeAuth">&times;</button>
+
+    <h2 id="authTitle">Bejelentkezés</h2>
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm" class="authForm">
+      <input type="text" name="username" placeholder="Felhasználónév" required>
+      <input type="password" name="password" placeholder="Jelszó" required>
+      <button type="submit">Belépés</button>
+    </form>
+
+    <p>Vagy <a href="#" id="showRegister">Regisztrálj</a></p>
+
+    <!-- REGISTER FORM (alapból hidden) -->
+    <form id="registerForm" class="authForm hidden" method="POST" action="api/register.php">
+      <input type="text" name="username" placeholder="Új felhasználónév" required>
+      <input type="password" name="password" placeholder="Jelszó" required>
+      <button type="submit">Regisztráció</button>
+    </form>
+
+  </div>
+</div>
+
+
 
 <main id="productGrid">
   <div class="product" onclick="openProduct(1)">
