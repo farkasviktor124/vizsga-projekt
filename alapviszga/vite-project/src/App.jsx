@@ -1,69 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
+import "./index.css";
 
 
+export default function RetroGshop() {
   return (
-    <>
-
-    
-  <main id="productGrid">
-
-        <div className="product" onClick={() => openProduct(1)}>
-           <img src="images/1416637426.msi-cyborg-15-a13vf-1816-9s7-15k111-1816.jpg" /> 
-          <h3>MSI Cyborg 15 Gaming Laptop</h3>
-          <p>499 990 Ft</p>
+    <div className="app">
+      {/* Header */}
+      <header className="header">
+        <div className="header-left">
+          <h1>RetroGshop</h1>
+          <p className="subtitle">A retro és modern technológia találkozása!</p>
+          <button className="auth-btn">Bejelentkezés / Regisztráció</button>
         </div>
 
-        <div className="product" onClick={() => openProduct(2)}>
-          <img src="images/res_c7cea2fd64f0ba2390b54ee1a4a0a5ec.png" />
-          <h3>RTX 4070 Ti Super Videókártya</h3>
-          <p>249 990 Ft</p>
+        <div className="header-right">
+          <button className="cart-btn">Kosár (0)</button>
         </div>
+      </header>
 
-        <div className="product" onClick={() => openProduct(3)}>
-          <img src="images/ProductImage_GATA-2679_01_06a58eb77a80f6c01476dedb8a28ebb3.jpg" />
-          <h3>Corsair Mechanikus billentyűzet</h3>
-          <p>39 990 Ft</p>
-        </div>
+      {/* Products */}
+      <main className="products">
+        <ProductCard
+          image="/images/msi-laptop.png"
+          title="MSI Cyborg 15 Gaming Laptop"
+          price="499 990 Ft"
+        />
 
+        <ProductCard
+          image="/images/rtx-4070-ti.png"
+          title="RTX 4070 Ti Super Videókártya"
+          price="249 990 Ft"
+        />
+
+        <ProductCard
+          image="/images/corsair-keyboard.png"
+          title="Corsair Mechanikus billentyűzet"
+          price="39 990 Ft"
+        />
       </main>
-
-      {/* TERMÉK OLDAL */}
-      <section id="productPage" className="hidden">
-
-        <button className="back" onClick={() => goBack()}>
-          ⬅ Vissza
-        </button>
-
-        <div className="product-detail">
-          <img id="detailImg" />
-
-          <div>
-            <h2 id="detailName"></h2>
-            <p id="detailPrice"></p>
-            <p>Erőteljes, modern hardver játékhoz és munkához.</p>
-
-            <button onClick={() => addToCart()}>
-              🛒 Kosárba
-            </button>
-
-            <button className="pay">
-              💳 Fizetés
-            </button>
-          </div>
-        </div>
-
-      </section>
-
-
-    
-
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+function ProductCard({ image, title, price }) {
+  return (
+    <div className="product-card">
+      <div className="image-wrapper">
+        <img src={image} alt={title} />
+      </div>
+
+      <div className="product-info">
+        <h3>{title}</h3>
+        <p className="price">{price}</p>
+      </div>
+    </div>
+  );
+}
