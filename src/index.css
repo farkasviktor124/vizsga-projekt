@@ -1,0 +1,158 @@
+
+/* ---------------- BODY ---------------- */
+body {
+  background: #0f1b24; /* sötét háttér, nem teljesen fekete */
+  color: #a0f0ff;      /* halványabb retro szín */
+  font-family: "Press Start 2P", monospace;
+  overflow-x: hidden;
+}
+
+ /*@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); */
+
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #112733;
+  border-bottom: 2px solid #66f0ff;
+}
+
+.navbar .btn {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 6px 12px;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.navbar .btn:hover {
+  background: #66f0ff;
+  color: #112733;
+  box-shadow: 0 0 8px #66f0ff;
+}
+
+/* ---------------- HEADER ---------------- */
+.header {
+  background: linear-gradient(90deg, #112733, #1a3b50);
+  padding: 20px;
+  border-bottom: 2px solid #66f0ff;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: #a0f0ff;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* ---------------- BUTTONS ---------------- */
+button {
+  background: #112733;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 8px 16px;
+  font-family: "Press Start 2P";
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 10px;
+}
+
+button:hover {
+  background: #66f0ff;
+  color: #112733;
+  box-shadow: 0 0 10px #66f0ff;
+}
+
+/* ---------------- MODAL ---------------- */
+.modal {
+  background: #1a2b3a;
+  border: 2px solid #66f0ff;
+  padding: 15px;
+  box-shadow: 0 0 15px #66f0ff;
+}
+
+.modal input {
+  background: #112733;
+  border: 1px solid #66f0ff;
+  color: #a0f0ff;
+  padding: 6px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* ---------------- LOADING SCREEN ---------------- */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #0f1b24;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  flex-direction: column;
+}
+
+.retro-title {
+  font-size: 24px;
+  color: #a0f0ff;
+  margin-bottom: 15px;
+}
+
+.retro-sub {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.retro-loader {
+  width: 180px;
+  height: 8px;
+  border: 1px solid #66f0ff;
+  margin-top: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: #66f0ff;
+  animation: loadbar 1.2s infinite linear;
+}
+
+@keyframes loadbar {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+/* ---------------- PRODUCT CARDS ---------------- */
+.product-card {
+  background: #1a2b3a;
+  border: 1px solid #66f0ff;
+  padding: 10px;
+  box-shadow: 0 0 10px #66f0ff;
+  transition: 0.2s;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px #66f0ff;
+}
+
+.product-info h3 {
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.price {
+  color: #a0f0ff;
+  font-size: 10px;
+}
