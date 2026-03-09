@@ -1,168 +1,152 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 
 export default function AuthModal({ visible, onClose, onLoginSuccess }) {
-
-  const [mode, setMode] = useState("login"); // login/register/seller/admin
-  const [captcha, setCaptcha] = useState(""); // captcha kód
-  const [captchaInput, setCaptchaInput] = useState(""); // captcha input
-
-
-  useEffect(() => {
-    if (mode === "admin") {
-      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-      let code = "";
-      for (let i = 0; i < 5; i++) {
-        code += chars[Math.floor(Math.random() * chars.length)];
-      }
-      setCaptcha(code);
-    }
-  }, [mode]); 
+  const [mode, setMode] = useState("login"); // login/register
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
-    e.preventDefault(); 
+    e.preventDefault();
+    setLoading(true);
+    
     const form = e.target;
     const formData = new FormData(form);
-
-   
-    if (mode === "admin") {
-      const username = formData.get("username");
-      const password = formData.get("password");
-
-      
-      if (captchaInput !== captcha) {
-        alert("Hibás CAPTCHA kód!");
-        return;
-      }
-
-   
-      const response = await fetch("http://localhost:4000/api/admin-login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        onLoginSuccess("admin", username); // Visszajelzés a szülőnek
-        onClose(); // Modal bezárása
-      } else {
-        alert("Hibás admin adatok!");
-      }
-      return;
-    }
-
-   
-    const data = {
-      type: mode,
-      username: formData.get("username") || null,
-      email: formData.get("email"),
-      password: formData.get("password"),
-    };
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const username = formData.get("username");
 
     try {
-      const url =
-        mode === "login"
-          ? "http://localhost:4000/api/login"
-          : "http://localhost:4000/api/users";
+      // BEJELENTKEZÉS
+      if (mode === "login") {
+        const response = await fetch("http://localhost:4000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: email, password })
+        });
 
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+        const result = await response.json();
 
-      const result = await response.json();
+        if (response.ok && result.success) {
+          localStorage.setItem('token', result.token);
+          localStorage.setItem('user', JSON.stringify(result.user));
+          onLoginSuccess(result.user);
+          onClose();
+        } else {
+          alert(" " + (result.error || "Hibás bejelentkezési adatok!"));
+        }
+      } 
+      
+      // REGISZTRÁCIÓ
+      else if (mode === "register") {
+        const response = await fetch("http://localhost:4000/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            username, 
+            email,
+            password,
+            role: 'user' 
+          })
+        });
 
-      if (result.success) {
-        onLoginSuccess("user", data.username || "Felhasználó");
-        onClose();
-      } else {
-        alert("Hiba: " + result.error);
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          alert(" Sikeres regisztráció! Most jelentkezz be.");
+          setMode("login");
+        } else {
+          alert(" " + (result.error || "Hiba a regisztráció során!"));
+        }
       }
     } catch (err) {
       console.error(err);
-      alert("Hiba a kapcsolat során!");
+      alert(" Hálózati hiba! Ellenőrizd, hogy fut-e a backend (http://localhost:4000)");
+    } finally {
+      setLoading(false);
     }
   }
 
-  
   if (!visible) return null;
 
   return (
     <>
-      {/* Háttér elsötétítés - kattintásra bezár */}
       <div className="modal-overlay" onClick={onClose} />
       
-      <div className="modal animate-fade-in">
-        {/* Bezáró gomb */}
+      <div className="modal">
         <button className="modal-close" onClick={onClose}>×</button>
 
-        {/* Fülek a módok között */}
-        <div className="modal-tabs">
-          <button className={mode === "login" ? "active" : ""} onClick={() => setMode("login")}>
-            Bejelentkezés
-          </button>
-          <button className={mode === "register" ? "active" : ""} onClick={() => setMode("register")}>
-            Regisztráció
-          </button>
-          <button className={mode === "seller" ? "active" : ""} onClick={() => setMode("seller")}>
-            Eladó fiók
-          </button>
-          <button className={mode === "admin" ? "active" : ""} onClick={() => setMode("admin")}>
-            Admin
+        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>
+          {mode === "login" ? " Bejelentkezés" : " Regisztráció"}
+        </h2>
+
+        <form onSubmit={handleSubmit}>
+          {/* Regisztrációnál név mező */}
+          {mode === "register" && (
+            <input
+              name="username"
+              type="text"
+              placeholder="Felhasználónév"
+              required
+              autoFocus
+            />
+          )}
+
+          {/* Email cím */}
+          <input
+            name="email"
+            type="email"
+            placeholder="Email cím"
+            required
+            autoFocus={mode === "login"}
+          />
+
+          {/* Jelszó */}
+          <input
+            name="password"
+            type="password"
+            placeholder="Jelszó"
+            required
+            minLength={mode === "register" ? "6" : undefined}
+          />
+
+          {/* Gombok */}
+          <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+            <button type="submit" disabled={loading} style={{ flex: 2 }}>
+              {loading ? "..." : (mode === "login" ? "Bejelentkezés" : "Regisztráció")}
+            </button>
+            <button type="button" onClick={onClose} style={{ flex: 1 }}>
+              Mégsem
+            </button>
+          </div>
+        </form>
+
+        {/* Váltás bejelentkezés/regisztráció között */}
+        <div style={{ marginTop: '15px', textAlign: 'center' }}>
+          <button 
+            type="button"
+            onClick={() => setMode(mode === "login" ? "register" : "login")}
+            style={{ 
+              background: 'transparent',
+              border: '1px solid #66f0ff',
+              width: '100%'
+            }}
+          >
+            {mode === "login" 
+              ? "➡️ Nincs még fiókod? Regisztrálj!" 
+              : "⬅️ Van már fiókod? Jelentkezz be!"}
           </button>
         </div>
 
-        {/* Űrlap - a mode-tól függően más inputok jelennek meg */}
-        <form className="modal-form" onSubmit={handleSubmit}>
-          {/* Admin mód */}
-          {mode === "admin" && (
-            <>
-              <input name="username" type="text" placeholder="Admin" required />
-              <input name="password" type="password" placeholder="Jelszó" required />
-
-              {/* Captcha mezők 
-              <div className="captcha-box">
-                <div className="captcha-code">{captcha}</div>
-                <input
-                  type="text"
-                  placeholder="Írd be a kódot"
-                  value={captchaInput}
-                  onChange={(e) => setCaptchaInput(e.target.value)}
-                  required
-                />
-              </div>
-
-              <button type="submit">Admin bejelentkezés</button>
-              */}
-            </>
-          )}
-
-          {/* Nem admin módok */}
-          {mode !== "admin" && (
-            <>
-              {mode !== "login" && (
-                <input
-                  name="username"
-                  type="text"
-                  placeholder={mode === "seller" ? "Eladó név" : "Felhasználónév"}
-                  required
-                />
-              )}
-              <input name="email" type="email" placeholder="Email" required />
-              <input name="password" type="password" placeholder="Jelszó" required />
-              <button type="submit">
-                {mode === "login"
-                  ? "Bejelentkezés"
-                  : mode === "register"
-                  ? "Regisztráció"
-                  : "Eladó fiók létrehozása"}
-              </button>
-            </>
-          )}
-        </form>
+        {/* Teszt admin info */}
+        <div style={{ 
+          marginTop: '15px', 
+          fontSize: '8px', 
+          textAlign: 'center',
+          color: '#66f0ff',
+          borderTop: '1px solid #66f0ff',
+          paddingTop: '10px'
+        }}>
+          Teszt admin: admin@admin.com / admin123
+        </div>
       </div>
     </>
   );
