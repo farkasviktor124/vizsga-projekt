@@ -1,0 +1,482 @@
+.termek-reszletek-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.vissza-gomb {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-family: "Press Start 2P", monospace;
+  font-size: 14px;
+}
+
+.vissza-gomb:hover {
+  background: #66f0ff;
+  color: #112733;
+  box-shadow: 0 0 8px #66f0ff;
+}
+
+.termek-reszletek {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 30px;
+  background: #1a2b3a;
+  border: 2px solid #66f0ff;
+  padding: 30px;
+  box-shadow: 0 0 20px #66f0ff;
+}
+
+/* Bal oldal */
+.bal-oldal {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.termek-kep-nagy {
+  width: 100%;
+  height: 400px;
+  background: #0f1b24;
+  border: 1px solid #66f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.termek-kep-nagy img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.termek-cim {
+  color: #a0f0ff;
+  font-size: 24px;
+  margin: 0;
+}
+
+.termek-leiras {
+  color: #a0f0ff;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Szolgáltatások */
+.szolgaltatasok {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #66f0ff;
+  padding-top: 20px;
+}
+
+.szolgaltatas-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #a0f0ff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.szolgaltatas-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #66f0ff;
+}
+
+.szolgaltatas-nev {
+  flex: 1;
+}
+
+.szolgaltatas-ar {
+  color: #66f0ff;
+}
+
+.tovabbi-szolgaltatasok {
+  margin-top: 10px;
+  color: #4ecdc4;
+  font-size: 14px;
+}
+
+/* Raktár info */
+.raktar-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #66f0ff;
+  padding-top: 20px;
+}
+
+.raktaron-jelzo {
+  color: #4ecdc4;
+  font-size: 14px;
+}
+
+.szallitas-info {
+  color: #66f0ff;
+  font-size: 12px;
+}
+
+/* Jobb oldal */
+.jobb-oldal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ujdonsag-cimke {
+  background: #66f0ff;
+  color: #0f1b24;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.ar-reszletek {
+  background: #0f1b24;
+  padding: 15px;
+  border: 1px solid #66f0ff;
+}
+
+.aktualis-ar {
+  font-size: 32px;
+  color: #66f0ff;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.netto-ar {
+  font-size: 14px;
+  color: #a0f0ff;
+  opacity: 0.7;
+}
+
+/* Részletfizetés */
+.reszletfizetes {
+  background: #0f1b24;
+  padding: 15px;
+  border: 1px solid #66f0ff;
+}
+
+.reszletfizetes h3 {
+  color: #a0f0ff;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.reszlet-osszeg {
+  color: #a0f0ff;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.reszlet-osszeg strong {
+  color: #66f0ff;
+  font-size: 18px;
+}
+
+.thm {
+  color: #a0f0ff;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.thm strong {
+  color: #66f0ff;
+}
+
+.reszletfizetes-gomb {
+  width: 100%;
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 10px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.reszletfizetes-gomb:hover {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+.kosar-gomb-nagy {
+  width: 100%;
+  background: #66f0ff;
+  color: #0f1b24;
+  border: none;
+  padding: 15px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.kosar-gomb-nagy:hover {
+  background: #a0f0ff;
+  box-shadow: 0 0 20px #66f0ff;
+}
+
+/* Műveletek */
+.termek-muveletek {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.muvelet-gomb {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 8px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.muvelet-gomb:hover {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+/* Termék infók */
+.termek-infok {
+  background: #0f1b24;
+  padding: 15px;
+  border: 1px solid #66f0ff;
+}
+
+.termek-infok p {
+  color: #a0f0ff;
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.termek-infok strong {
+  color: #66f0ff;
+}
+
+/* Értékelés szekció */
+.ertekeles-szekcio {
+  margin-top: 30px;
+  background: #1a2b3a;
+  border: 2px solid #66f0ff;
+  padding: 30px;
+}
+
+.ertekeles-szekcio h2 {
+  color: #a0f0ff;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Tabok */
+.termek-tabok {
+  display: flex;
+  gap: 5px;
+  border-bottom: 1px solid #66f0ff;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.termek-tabok button {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.termek-tabok button.aktiv {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+.tab-tartalom {
+  color: #a0f0ff;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Értékelés írása */
+.ertekeles-iras {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ertekeles-gomb {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 12px 24px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ertekeles-gomb:hover {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+/* Reszponzivitás */
+@media (max-width: 1024px) {
+  .termek-reszletek {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .termek-muveletek {
+    grid-template-columns: 1fr;
+  }
+  
+  .raktar-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .termek-tabok {
+    flex-wrap: wrap;
+  }
+  
+  .termek-tabok button {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+/* TermekReszletek.css */
+
+.page {
+  padding: 30px;
+  background: #0f1720;
+  min-height: 100vh;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.editBtn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #66f0ff;
+  font-weight: bold;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  background: #162433;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.imageBox {
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.changeImgBtn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 28px;
+  margin: 0;
+}
+
+.price {
+  font-size: 24px;
+  color: #66f0ff;
+  font-weight: bold;
+}
+
+.infoBox,
+.descBox {
+  background: #0c141d;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 6px;
+}
+
+.textarea {
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+}
+
+.cartBtn {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #66f0ff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.saveBtn {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: limegreen;
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { useCart } from "./components/CartContext.jsx"; // ✅ CartContext import
 import Termek from "./components/Termek.jsx";
 import Admin from "./components/Admin.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
@@ -9,6 +10,8 @@ import TerrmekFelvitel from "./components/TerrmekFelvitel.jsx";
 import NavBar from "./components/NavBar.jsx";
 import ProductGrid from "./components/ProductGrid.jsx";
 import UserSwitch from "./components/UserSwitch.jsx";
+import TermekReszletek from "./components/TermekReszletek";
+import CartPage from "./components/CartPage";
 import "./index.css";
 
 function AppContent() {
@@ -17,19 +20,22 @@ function AppContent() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  // ✅ CartContext használata
+  const { cartItems } = useCart();
+  const totalCartItems = cartItems?.reduce((sum, item) => sum + (item.quantity ?? 1), 0) ?? 0;
+
   // Betöltés localStorage-ból
   useEffect(() => {
-    const savedUser = localStorage.getItem('user');
+    const savedUser = localStorage.getItem("user");
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
   }, []);
 
-  // Bejelentkezés siker
   function handleLoginSuccess(userData) {
     setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
-    
+    localStorage.setItem("user", JSON.stringify(userData));
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -39,21 +45,19 @@ function AppContent() {
     }, 1500);
   }
 
-  // Fiókváltás
   function handleSwitchUser(newUser) {
     setUser(newUser);
-    localStorage.setItem('user', JSON.stringify(newUser));
-    
+    localStorage.setItem("user", JSON.stringify(newUser));
+
     if (newUser.role === "admin") navigate("/admin");
     else if (newUser.role === "seller") navigate("/termekfelvitel");
     else navigate("/");
   }
 
-  // Kijelentkezés
   function handleLogout() {
     setUser(null);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     navigate("/");
   }
 
@@ -70,7 +74,7 @@ function AppContent() {
 
           <div className="header-right">
             {user ? (
-              <UserSwitch 
+              <UserSwitch
                 currentUser={user}
                 onSwitchUser={handleSwitchUser}
                 onLogout={handleLogout}
@@ -80,7 +84,10 @@ function AppContent() {
                 Bejelentkezés / Regisztráció
               </button>
             )}
-            <button className="cart-btn">Kosár (0)</button>
+            {/* ✅ Kosár gomb most már mutatja a darabszámot */}
+            <button className="cart-btn" onClick={() => navigate("/cart")}>
+              Kosár ({totalCartItems})
+            </button>
           </div>
         </header>
 
@@ -91,6 +98,8 @@ function AppContent() {
           <Route path="/termekek" element={<Termek />} />
           <Route path="/termekfelvitel" element={<TerrmekFelvitel />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/termek/:slug" element={<TermekReszletek />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
 
         <AuthModal

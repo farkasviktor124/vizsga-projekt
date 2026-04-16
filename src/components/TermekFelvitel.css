@@ -1,0 +1,97 @@
+.termekfelvitel-container {
+  background: #1a2b3a;
+  border: 2px solid #66f0ff;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 0 15px #66f0ff;
+  font-family: "Press Start 2P", monospace;
+  color: #a0f0ff;
+  border-radius: 8px;
+}
+
+.termekfelvitel-container h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.termekfelvitel-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.termekfelvitel-container input,
+.termekfelvitel-container textarea {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #66f0ff;
+  background: #0f1b24;
+  color: #a0f0ff;
+  outline: none;
+  border-radius: 4px;
+  transition: all 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.termekfelvitel-container textarea {
+  resize: vertical;
+}
+
+/* FOCUS */
+.termekfelvitel-container input:focus,
+.termekfelvitel-container textarea:focus {
+  border-color: #a0f0ff;
+  box-shadow: 0 0 10px #66f0ff;
+}
+
+/* BUTTON */
+.termekfelvitel-container button {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #66f0ff;
+  background: #0f1b24;
+  color: #a0f0ff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.termekfelvitel-container button:hover {
+  background: #1a2b3a;
+  box-shadow: 0 0 15px #66f0ff;
+  border-color: #a0f0ff;
+}
+
+/* MESSAGE */
+.termekfelvitel-container .message {
+  margin-top: 10px;
+  padding: 10px;
+  background: #0f1b24;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #66f0ff;
+  border-radius: 4px;
+}
+
+/* RADIO */
+.termekfelvitel-container .radio-group {
+  display: flex;
+  gap: 20px;
+}
+
+.termekfelvitel-container .radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.termekfelvitel-container .radio-group input[type="radio"] {
+  accent-color: #66f0ff;
+  cursor: pointer;
+}

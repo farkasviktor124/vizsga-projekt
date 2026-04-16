@@ -43,7 +43,7 @@ const ProductGrid = () => {
   if (error) {
     return (
       <div style={{ color: "#ff6b6b", textAlign: "center", padding: "50px" }}>
-        <h3>❌ Hiba történt</h3>
+        <h3> Hiba történt</h3>
         <p>{error}</p>
         <button onClick={fetchProducts}>Újrapróbálkozás</button>
       </div>
@@ -54,7 +54,7 @@ const ProductGrid = () => {
     <div id="productGrid">
       {products.length === 0 ? (
         <p style={{ color: "#a0f0ff", textAlign: "center", padding: "50px" }}>
-          ⚡ Nincsenek termékek az adatbázisban ⚡
+           Nincsenek termékek az adatbázisban 
         </p>
       ) : (
         products.map((product) => (

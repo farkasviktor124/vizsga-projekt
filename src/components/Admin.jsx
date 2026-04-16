@@ -1,4 +1,3 @@
-// Admin.jsx - Javított verzió
 import React, { useEffect, useState } from "react";
 
 function Admin() {
@@ -18,8 +17,15 @@ function Admin() {
         throw new Error(`HTTP hiba: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Felhasználók:", data); // Debug
-      setUsers(data);
+      console.log("Felhasználók:", data);
+      
+      // Mivel a backend közvetlenül a tömböt adja vissza
+      if (Array.isArray(data)) {
+        setUsers(data);
+      } else {
+        console.error("Ismeretlen adatformátum:", data);
+        setUsers([]);
+      }
     } catch (err) {
       console.error("Hiba a felhasználók lekérésekor:", err);
       setError(err.message);

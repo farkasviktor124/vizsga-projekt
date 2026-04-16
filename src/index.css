@@ -5,6 +5,7 @@ body {
   color: #a0f0ff;
   font-family: "Press Start 2P", monospace;
   overflow-x: hidden;
+  font-size: 22px;  /* Alap betűméret */
 }
 
 #root {
@@ -32,7 +33,7 @@ header {
 }
 
 .subtitle {
-  font-size: 10px;
+  font-size: 18px;  /* megnövelve */
   opacity: 0.7;
   margin-top: 5px;
 }
@@ -45,33 +46,47 @@ header {
   padding: 10px 20px;
   background: #112733;
   border-bottom: 2px solid #66f0ff;
-  margin-bottom: 10px;
 }
 
-.nav-links {
-  display: flex;
-  gap: 15px;
-}
-
-.nav-links a {
+.navbar .btn {
+  background: transparent;
   color: #a0f0ff;
-  text-decoration: none;
-  font-size: 10px;
-  padding: 5px 10px;
-  border: 1px solid transparent;
+  border: 1px solid #66f0ff;
+  padding: 6px 12px;
+  font-size: 18px;  /* megnövelve */
   transition: all 0.2s;
 }
 
-.nav-links a:hover {
-  border-color: #66f0ff;
+.navbar .btn:hover {
+  background: #66f0ff;
+  color: #112733;
   box-shadow: 0 0 8px #66f0ff;
 }
 
-.nav-user {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 10px;
+.vasarlas-gomb {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 6px 12px;
+  font-size: 18px;  /* megnövelve */
+  font-family: "Press Start 2P", monospace;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.vasarlas-gomb:hover {
+  background: #66f0ff;
+  color: #112733;
+  box-shadow: 0 0 8px #66f0ff;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 30px;
 }
 
 /* ---------------- BUTTONS ---------------- */
@@ -83,7 +98,7 @@ button {
   font-family: "Press Start 2P", monospace;
   cursor: pointer;
   transition: 0.2s;
-  font-size: 10px;
+  font-size: 18px;  /* megnövelve */
   border-radius: 0;
 }
 
@@ -110,12 +125,12 @@ button:disabled {
 .product-card {
   background: #1a2b3a;
   border: 2px solid #66f0ff;
-  padding: 15px;
+  padding: 18px;
   box-shadow: 0 0 15px #66f0ff;
   transition: all 0.3s;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   image-rendering: pixelated;
   font-family: "Press Start 2P", monospace;
 }
@@ -128,15 +143,15 @@ button:disabled {
 
 .product-image {
   width: 100%;
-  height: 150px;
+  height: 180px;
   background: #0f1b24;
   border: 1px solid #66f0ff;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #a0f0ff;
-  font-size: 12px;
-  margin-bottom: 10px;
+  font-size: 18px;  /* megnövelve */
+  margin-bottom: 12px;
 }
 
 .product-image img {
@@ -147,30 +162,41 @@ button:disabled {
 }
 
 .product-card h3 {
-  font-size: 14px;
+  font-size: 22px;  /* megnövelve */
   color: #a0f0ff;
-  margin: 5px 0;
+  margin: 6px 0;
   text-transform: uppercase;
   border-bottom: 1px solid #66f0ff;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
 }
 
 .product-details {
-  font-size: 8px;
+  font-size: 22px;  /* megnövelve */
   color: #a0f0ff;
   line-height: 1.8;
 }
 
 .product-details p {
-  margin: 5px 0;
+  margin: 8px 0;
+  font-size: 22px;  /* megnövelve */
 }
 
 .product-details strong {
   color: #66f0ff;
+  font-size: 22px;  /* megnövelve */
+}
+
+/* Állapot, évjárat, gyártó, árus specifikus stílus */
+.product-details p:nth-of-type(2),
+.product-details p:nth-of-type(3),
+.product-details p:nth-of-type(4),
+.product-details p:nth-of-type(5) {
+  font-size: 22px;
+  letter-spacing: 0.5px;
 }
 
 .price {
-  font-size: 16px;
+  font-size: 24px;  /* megnövelve */
   color: #66f0ff;
   text-shadow: 0 0 5px #66f0ff;
   margin: 10px 0;
@@ -183,7 +209,7 @@ button:disabled {
   border: 1px solid #66f0ff;
   padding: 10px;
   font-family: "Press Start 2P", monospace;
-  font-size: 8px;
+  font-size: 18px;  /* megnövelve */
   cursor: pointer;
   transition: all 0.2s;
   margin-top: 10px;
@@ -249,7 +275,7 @@ button:disabled {
   border: 1px solid #66f0ff;
   color: #a0f0ff;
   padding: 8px 4px;
-  font-size: 8px;
+  font-size: 18px;  /* megnövelve */
   cursor: pointer;
 }
 
@@ -267,7 +293,7 @@ button:disabled {
 
 .modal-form h3 {
   color: #66f0ff;
-  font-size: 12px;
+  font-size: 22px;  /* megnövelve */
   text-align: center;
   margin: 0 0 10px 0;
 }
@@ -279,7 +305,7 @@ button:disabled {
   color: #a0f0ff;
   padding: 12px;
   font-family: "Press Start 2P", monospace;
-  font-size: 10px;
+  font-size: 18px;  /* megnövelve */
   width: 100%;
   box-sizing: border-box;
 }
@@ -336,7 +362,7 @@ button:disabled {
 }
 
 .retro-sub {
-  font-size: 10px;
+  font-size: 18px;  /* megnövelve */
   opacity: 0.7;
   margin-bottom: 20px;
 }
@@ -417,10 +443,11 @@ button:disabled {
   }
   
   .modal-tabs button {
-    font-size: 7px;
+    font-size: 14px;
     padding: 6px 2px;
   }
 }
+
 /* ---------------- USER SWITCH ---------------- */
 .user-switch-container {
   position: relative;
@@ -464,19 +491,19 @@ button:disabled {
 }
 
 .user-name {
-  font-size: 10px;
+  font-size: 18px;  /* megnövelve */
   color: #a0f0ff;
   margin-bottom: 3px;
 }
 
 .user-role {
-  font-size: 8px;
+  font-size: 16px;  /* megnövelve */
   color: #66f0ff;
   opacity: 0.8;
 }
 
 .dropdown-arrow {
-  font-size: 10px;
+  font-size: 18px;  /* megnövelve */
   color: #66f0ff;
   transition: transform 0.3s;
 }
@@ -529,7 +556,7 @@ button:disabled {
 }
 
 .dropdown-title {
-  font-size: 12px;
+  font-size: 18px;  /* megnövelve */
   color: #a0f0ff;
 }
 
@@ -537,13 +564,13 @@ button:disabled {
   background: transparent;
   border: none;
   color: #66f0ff;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   padding: 5px;
 }
 
 .dropdown-subtitle {
-  font-size: 9px;
+  font-size: 16px;  /* megnövelve */
   color: #66f0ff;
   padding: 10px 15px 5px;
   text-transform: uppercase;
@@ -587,20 +614,20 @@ button:disabled {
 }
 
 .account-name {
-  font-size: 11px;
+  font-size: 18px;  /* megnövelve */
   color: #a0f0ff;
   margin-bottom: 3px;
 }
 
 .account-email {
-  font-size: 8px;
+  font-size: 16px;  /* megnövelve */
   color: #66f0ff;
   opacity: 0.7;
   margin-bottom: 2px;
 }
 
 .account-role, .account-badge {
-  font-size: 8px;
+  font-size: 16px;  /* megnövelve */
   color: #4ecdc4;
 }
 
@@ -632,7 +659,7 @@ button:disabled {
   border: none;
   border-radius: 30px;
   font-family: "Press Start 2P", monospace;
-  font-size: 9px;
+  font-size: 18px;  /* megnövelve */
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
@@ -673,6 +700,7 @@ button:disabled {
     to { transform: translateY(0); }
   }
 }
+
 /* Admin dropdown - nagyobb */
 .admin-dropdown {
   width: 380px !important;
@@ -699,7 +727,7 @@ button:disabled {
   padding: 30px 20px;
   text-align: center;
   color: #a0f0ff;
-  font-size: 8px;
+  font-size: 18px;  /* megnövelve */
   border-bottom: 1px solid #66f0ff;
 }
 
@@ -714,7 +742,7 @@ button:disabled {
   padding: 30px;
   text-align: center;
   color: #66f0ff;
-  font-size: 10px;
+  font-size: 18px;  /* megnövelve */
   border-bottom: 1px solid #66f0ff;
 }
 
@@ -737,31 +765,17 @@ button:disabled {
   display: inline-block;
   padding: 2px 8px;
   border-radius: 10px;
-  font-size: 7px;
+  font-size: 16px;  /* megnövelve */
   margin-top: 3px;
   width: fit-content;
 }
 
-.account-role:contains('Admin') {
-  background: #ff6b6b20;
-  color: #ff6b6b;
-}
-
-.account-role:contains('Eladó') {
-  background: #4ecdc420;
-  color: #4ecdc4;
-}
-
-.account-role:contains('Vásárló') {
-  background: #45b7d120;
-  color: #45b7d1;
-}
 /* Account badge-ek */
 .account-badge {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 20px;
-  font-size: 8px;
+  font-size: 16px;  /* megnövelve */
   margin-top: 5px;
   width: fit-content;
 }
@@ -771,7 +785,7 @@ button:disabled {
   display: inline-block;
   padding: 3px 8px;
   border-radius: 12px;
-  font-size: 7px;
+  font-size: 16px;  /* megnövelve */
   margin-top: 3px;
   width: fit-content;
 }
@@ -798,4 +812,253 @@ button:disabled {
 .account-badge[data-role="user"] {
   background: #45b7d120;
   color: #45b7d1;
+}
+
+/* Termekek.css */
+.termekek-container {
+  display: flex;
+  gap: 25px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Szűrő oldalsáv */
+.szuro-oldalsav {
+  width: 250px;
+  background: #1a2b3a;
+  border: 2px solid #66f0ff;
+  padding: 20px;
+  height: fit-content;
+}
+
+.szuro-oldalsav h2 {
+  color: #66f0ff;
+  font-size: 22px;  /* megnövelve */
+  margin-bottom: 20px;
+  border-bottom: 1px solid #66f0ff;
+  padding-bottom: 10px;
+}
+
+.szuro-opciok {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.szuro-opciok label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a0f0ff;
+  font-size: 18px;  /* megnövelve */
+}
+
+.ar-szuro h3 {
+  color: #a0f0ff;
+  font-size: 20px;  /* megnövelve */
+  margin-bottom: 10px;
+}
+
+.ar-szuro input[type="range"] {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.ar-ertekek {
+  display: flex;
+  justify-content: space-between;
+  color: #a0f0ff;
+  font-size: 16px;  /* megnövelve */
+}
+
+/* Termékek grid */
+.termekek-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Termék kártya */
+.termek-kartya {
+  background: #1a2b3a;
+  border: 1px solid #66f0ff;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+}
+
+.termek-kep {
+  width: 100%;
+  height: 200px;
+  background: #0f1b24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.termek-kep img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.termek-cimke {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #66f0ff;
+  color: #0f1b24;
+  padding: 4px 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.termek-nev {
+  color: #a0f0ff;
+  font-size: 22px;  /* megnövelve */
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+.termek-leiras {
+  color: #a0f0ff;
+  font-size: 18px;  /* megnövelve */
+  opacity: 0.8;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.termek-ar-resz {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.normal-ar {
+  font-size: 24px;  /* megnövelve */
+  color: #66f0ff;
+  font-weight: bold;
+}
+
+.regi-ar {
+  font-size: 18px;  /* megnövelve */
+  color: #a0f0ff;
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.uj-ar {
+  font-size: 24px;  /* megnövelve */
+  color: #66f0ff;
+  font-weight: bold;
+}
+
+.akcio-jelzo {
+  background: rgba(102, 240, 255, 0.2);
+  color: #66f0ff;
+  padding: 4px 8px;
+  font-size: 18px;  /* megnövelve */
+  font-weight: bold;
+  width: fit-content;
+  margin-bottom: 5px;
+}
+
+.termek-elerhetoseg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.raktaron {
+  color: #4ecdc4;
+  font-size: 18px;  /* megnövelve */
+}
+
+.nem-elerheto {
+  color: #ff6b6b;
+  font-size: 18px;  /* megnövelve */
+}
+
+.kosar-gomb, .figyeles-gomb {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 6px 12px;
+  font-size: 18px;  /* megnövelve */
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.kosar-gomb:hover, .figyeles-gomb:hover {
+  background: #66f0ff;
+  color: #0f1b24;
+  box-shadow: 0 0 8px #66f0ff;
+}
+
+.figyeles-gomb {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.figyeles-gomb:hover {
+  background: #ff6b6b;
+  color: #0f1b24;
+  box-shadow: 0 0 8px #ff6b6b;
+}
+
+.szallitas-info {
+  color: #4ecdc4;
+  font-size: 16px;  /* megnövelve */
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(102, 240, 255, 0.2);
+}
+
+/* Reszponzivitás */
+@media (max-width: 1024px) {
+  .termekek-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .termekek-container {
+    flex-direction: column;
+  }
+  
+  .szuro-oldalsav {
+    width: 100%;
+  }
+  
+  .termekek-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  body {
+    font-size: 16px;  /* mobilra kisebb betű */
+  }
+}
+/* egyszerű badge stílus, igazíthatod a design-hoz */
+.cart-btn { padding-right: 10px; }
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff6b6b;     /* piros badge */
+  color: white;
+  border-radius: 999px;
+  padding: 2px 6px;
+  font-size: 11px;
+  line-height: 1;
+  min-width: 18px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }

@@ -1,15 +1,14 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./users.db'); 
-db.serialize(() => {
-  db.run(`
-    CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      type TEXT NOT NULL,
-      username TEXT,
-      email TEXT NOT NULL UNIQUE,
-      password TEXT NOT NULL
-    )
-  `);
+const path = require('path');
+
+const dbPath = path.join(__dirname, 'webshopretrog.db');
+
+const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
+  if (err) {
+    console.error('DB hiba:', err.message);
+  } else {
+    console.log('SQLite csatlakoztatva');
+  }
 });
 
 module.exports = db;

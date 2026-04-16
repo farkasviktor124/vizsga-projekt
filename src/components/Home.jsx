@@ -8,7 +8,7 @@ export default function Home() {
       <h1>
         Üdvözöljük a RetroGShop oldalán!
       </h1>
-      <Link to="/termekek">
+      <Link to="/termekek" className="vasarlas-gomb">
   Megkezdem a vásárlást
 </Link>
    
