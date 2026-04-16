@@ -1,0 +1,9 @@
+1. a homeba a link meglett oldva a termékekre visz
+2. a termekekt is vigye fel az oldalra /termekek és ne csak az adatbbe!
+3. a test et kivettem a package.json és a startot átszerkesztettem node helyett nodemonra mostmar csak start kell!
+4. backendbe lett modositva a termekek post és a termekek.jsx hogy lehessen felvinni!
+5. productcard csinositasa strong tag behozata és keret megadasa
+
+
+
+ 
