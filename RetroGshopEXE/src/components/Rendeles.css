@@ -1,0 +1,275 @@
+/* src/components/Rendeles.css */
+
+.rendeles-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.rendeles-container h1 {
+  color: #a0f0ff;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.rendeles-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 30px;
+}
+
+.rendeles-form {
+  background: #1a2b3a;
+  border: 1px solid #66f0ff;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.form-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #2a4a5a;
+}
+
+.form-section h2 {
+  color: #a0f0ff;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.rendeles-form input,
+.rendeles-form select,
+.rendeles-form textarea {
+  width: 100%;
+  padding: 12px;
+  background: #0f1b24;
+  border: 1px solid #2a4a5a;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.rendeles-form input:focus,
+.rendeles-form select:focus,
+.rendeles-form textarea:focus {
+  outline: none;
+  border-color: #66f0ff;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #a0f0ff;
+  cursor: pointer;
+}
+
+.szallitas-options,
+.fizetes-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.szallitas-card,
+.fizetes-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #0f1b24;
+  border: 1px solid #2a4a5a;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.szallitas-card:hover,
+.fizetes-card:hover {
+  border-color: #66f0ff;
+  background: #162836;
+}
+
+.szallitas-card input,
+.fizetes-card input {
+  width: auto;
+  margin: 0;
+}
+
+.szallitas-card div,
+.fizetes-card div {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.szallitas-card strong,
+.fizetes-card strong {
+  color: #a0f0ff;
+}
+
+.szallitas-card span,
+.fizetes-card span {
+  color: #66f0ff;
+}
+
+.pont-select {
+  margin-top: 15px;
+}
+
+.utanvetel-info {
+  margin-top: 15px;
+  padding: 12px;
+  background: #2a1a1a;
+  border: 1px solid #ff6b6b;
+  border-radius: 6px;
+  color: #ff6b6b;
+}
+
+.hiba-uzenet {
+  margin-top: 15px;
+  padding: 10px;
+  background: #2a1a1a;
+  border: 1px solid #ff6b6b;
+  border-radius: 6px;
+  color: #ff6b6b;
+  text-align: center;
+}
+
+.gombok {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.vissza-gomb,
+.tovabb-gomb,
+.megrendeles-gomb {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.vissza-gomb {
+  background: transparent;
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+}
+
+.vissza-gomb:hover {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.tovabb-gomb {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+.tovabb-gomb:hover {
+  background: #a0f0ff;
+  transform: translateY(-2px);
+}
+
+.megrendeles-gomb {
+  background: #4caf50;
+  color: white;
+}
+
+.megrendeles-gomb:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.rendeles-osszegzes {
+  background: #1a2b3a;
+  border: 1px solid #66f0ff;
+  border-radius: 12px;
+  padding: 24px;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.rendeles-osszegzes h2 {
+  color: #a0f0ff;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.osszegzes-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #2a4a5a;
+  color: #a0f0ff;
+}
+
+.osszegzes-item.total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #66f0ff;
+  border-bottom: none;
+}
+
+.termekek-listaja {
+  margin-bottom: 15px;
+}
+
+.termekek-listaja h3 {
+  color: #a0f0ff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.megjegyzes-textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.megjegyzes-preview {
+  margin-top: 15px;
+  padding: 10px;
+  background: #0f1b24;
+  border-radius: 6px;
+}
+
+.sikeres-uzenet {
+  text-align: center;
+  padding: 50px;
+  background: #1a2b3a;
+  border: 1px solid #4caf50;
+  border-radius: 12px;
+}
+
+.sikeres-uzenet h2 {
+  color: #4caf50;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .rendeles-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .gombok {
+    flex-direction: column;
+  }
+}

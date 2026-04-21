@@ -1,0 +1,107 @@
+/* ===== KONTAINER ===== */
+.bejelentes-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 24px;
+}
+
+/* ===== KÁRTYA ===== */
+.bejelentes-card {
+  background: #1a2b3a;
+  border: 1px solid #66f0ff;
+  border-radius: 10px;
+  padding: 40px;
+}
+
+/* ===== CÍM ===== */
+.bejelentes-title {
+  font-size: 30px;
+  color: #a0f0ff;
+  margin-bottom: 10px;
+}
+
+.bejelentes-subtitle {
+  color: #6a8a9a;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* ===== SUCCESS ===== */
+.success-message {
+  border: 1px solid #4caf50;
+  color: #4caf50;
+  padding: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ===== FORM ===== */
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #a0f0ff;
+  font-size: 14px;
+}
+
+/* INPUTOK */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid #2a4a5a;
+  color: #fff;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #66f0ff;
+}
+
+/* TEXTAREA */
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ===== GOMB ===== */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #66f0ff;
+  background: transparent;
+  color: #66f0ff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background: #66f0ff;
+  color: #0f1a24;
+}
+
+/* ===== RESZPONZÍV ===== */
+@media (max-width: 768px) {
+  .bejelentes-container {
+    margin: 30px 16px;
+    padding: 0;
+  }
+
+  .bejelentes-card {
+    padding: 24px;
+  }
+
+  .bejelentes-title {
+    font-size: 24px;
+  }
+}

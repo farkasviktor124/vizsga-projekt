@@ -1,0 +1,451 @@
+.termek-reszletek-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.vissza-gomb {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-family: "Press Start 2P", monospace;
+  font-size: 14px;
+}
+
+.vissza-gomb:hover {
+  background: #66f0ff;
+  color: #112733;
+  box-shadow: 0 0 8px #66f0ff;
+}
+
+.termek-reszletek {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 30px;
+  background: #1a2b3a;
+  border: 2px solid #66f0ff;
+  padding: 30px;
+  box-shadow: 0 0 20px #66f0ff;
+}
+
+.bal-oldal {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.termek-kep-nagy {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: #0f1b24;
+  border: 1px solid #66f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.termek-kep-nagy img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.termek-cim {
+  color: #a0f0ff;
+  font-size: 24px;
+  margin: 0;
+}
+
+.termek-leiras {
+  color: #a0f0ff;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.jobb-oldal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ar-reszletek {
+  background: #0f1b24;
+  padding: 15px;
+  border: 1px solid #66f0ff;
+}
+
+.aktualis-ar {
+  font-size: 32px;
+  color: #66f0ff;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.termek-infok {
+  background: #0f1b24;
+  padding: 15px;
+  border: 1px solid #66f0ff;
+}
+
+.termek-infok p {
+  color: #a0f0ff;
+  font-size: 16px;
+  margin: 10px 0;
+  line-height: 1.8;
+}
+
+.termek-infok strong {
+  color: #66f0ff;
+  font-size: 16px;
+}
+
+/* Készlet színezés - CSAK akkor piros, ha nincs készleten (0) */
+.termek-infok .keszlet-ertek {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.termek-infok .keszlet-ertek.elfogyott {
+  color: #ff4444;
+  font-weight: bold;
+}
+
+.termek-infok .keszlet-ertek.keszleten {
+  color: #a0f0ff;
+}
+
+.termek-infok .keszlet-ertek.keves {
+  color: #ffa500;
+  font-weight: bold;
+}
+
+.termek-input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background: #0f1b24;
+  border: 1px solid #66f0ff;
+  color: #a0f0ff;
+  font-size: 14px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.termek-input:focus {
+  outline: none;
+  border-color: #a0f0ff;
+  box-shadow: 0 0 5px #66f0ff;
+}
+
+.termek-textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px 12px;
+  background: #0f1b24;
+  border: 1px solid #66f0ff;
+  color: #a0f0ff;
+  font-size: 14px;
+  border-radius: 4px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.termek-textarea:focus {
+  outline: none;
+  border-color: #a0f0ff;
+  box-shadow: 0 0 5px #66f0ff;
+}
+
+.kosar-gomb-nagy {
+  width: 100%;
+  background: #66f0ff;
+  color: #0f1b24;
+  border: none;
+  padding: 15px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.kosar-gomb-nagy:hover:not(:disabled) {
+  background: #a0f0ff;
+  box-shadow: 0 0 20px #66f0ff;
+}
+
+.kosar-gomb-nagy:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mentes-gomb {
+  width: 100%;
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 12px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mentes-gomb:hover {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+.kep-edit-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: 1px solid #66f0ff;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  z-index: 2;
+}
+
+.kep-edit-btn:hover {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+.edit-ikon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #66f0ff;
+  color: white;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  z-index: 2;
+}
+
+.edit-ikon:hover {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+.file-hidden {
+  display: none;
+}
+
+.szolgaltatasok {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #66f0ff;
+  padding-top: 20px;
+}
+
+.raktar-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #66f0ff;
+  padding-top: 20px;
+}
+
+.raktaron-jelzo {
+  color: #4ecdc4;
+  font-size: 14px;
+}
+
+.szallitas-info {
+  color: #66f0ff;
+  font-size: 12px;
+}
+
+.termek-muveletek {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.muvelet-gomb {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 8px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.muvelet-gomb:hover {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+.ertekeles-szekcio {
+  margin-top: 30px;
+  background: #1a2b3a;
+  border: 2px solid #66f0ff;
+  padding: 30px;
+}
+
+.ertekeles-szekcio h2 {
+  color: #a0f0ff;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.termek-tabok {
+  display: flex;
+  gap: 5px;
+  border-bottom: 1px solid #66f0ff;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.termek-tabok button {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.termek-tabok button:hover {
+  background: rgba(102, 240, 255, 0.2);
+}
+
+.termek-tabok button.aktiv {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+.tab-tartalom {
+  color: #a0f0ff;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.ertekeles-iras {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ertekeles-gomb {
+  background: transparent;
+  color: #a0f0ff;
+  border: 1px solid #66f0ff;
+  padding: 12px 24px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ertekeles-gomb:hover {
+  background: #66f0ff;
+  color: #0f1b24;
+}
+
+/* OUT OF STOCK BADGE */
+.out-of-stock-badge-large {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff4444;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Reszponzív */
+@media (max-width: 1024px) {
+  .termek-reszletek {
+    grid-template-columns: 1fr;
+  }
+  
+  .termek-kep-nagy {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .termek-reszletek {
+    padding: 20px;
+  }
+  
+  .termek-muveletek {
+    grid-template-columns: 1fr;
+  }
+
+  .raktar-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .termek-tabok {
+    flex-wrap: wrap;
+  }
+
+  .termek-tabok button {
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .termek-kep-nagy {
+    height: 280px;
+  }
+  
+  .aktualis-ar {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .termek-reszletek {
+    padding: 15px;
+  }
+  
+  .termek-kep-nagy {
+    height: 220px;
+  }
+  
+  .termek-cim {
+    font-size: 20px;
+  }
+  
+  .termek-infok p {
+    font-size: 14px;
+  }
+}

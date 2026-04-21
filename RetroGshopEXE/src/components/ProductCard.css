@@ -1,0 +1,193 @@
+
+.product-card {
+  background: #1a2b3a;
+  border: 1px solid #66f0ff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(102, 240, 255, 0.2);
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background: #0f1b24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.out-of-stock-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ff4444;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.product-info {
+  padding: 12px;
+}
+
+.product-info h3 {
+  color: #a0f0ff;
+  font-size: 14px;
+  margin: 0 0 8px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  color: #66f0ff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+/* Termék részletek stílusok */
+.product-details {
+  margin: 10px 0;
+  padding: 8px;
+  background: #0f1b24;
+  border-radius: 6px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 11px;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  color: #888;
+  font-weight: normal;
+}
+
+.detail-value {
+  color: #a0f0ff;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* Készlet stílusok */
+.stock-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  padding: 6px 10px;
+  background: #0f1b24;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #a0f0ff;
+}
+
+.stock-info span:last-child {
+  font-weight: bold;
+  color: #66f0ff;
+}
+
+.stock-info.low-stock {
+  background: rgba(255, 165, 0, 0.15);
+  border: 1px solid #ffa500;
+}
+
+.stock-info.low-stock span:last-child {
+  color: #ffa500;
+}
+
+.product-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.kosar-gomb {
+  flex: 2;
+  background: #66f0ff;
+  color: #0f1b24;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.kosar-gomb:hover:not(:disabled) {
+  background: #a0f0ff;
+}
+
+.kosar-gomb:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.torles-gomb {
+  flex: 1;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.torles-gomb:hover {
+  background: #ff4444;
+}
+
+/* Reszponzív */
+@media (max-width: 768px) {
+  .product-image {
+    height: 140px;
+  }
+  
+  .product-info h3 {
+    font-size: 12px;
+  }
+  
+  .price {
+    font-size: 14px;
+  }
+  
+  .detail-row {
+    font-size: 9px;
+  }
+  
+  .stock-info {
+    font-size: 10px;
+  }
+  
+  .kosar-gomb, .torles-gomb {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+}
