@@ -1,0 +1,192 @@
+/* ===== KONTAINER ===== */
+.garancia-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 24px;
+}
+
+/* ===== KÁRTYA ===== */
+.garancia-card {
+  background: #1a2b3a;
+  border: 1px solid #66f0ff;
+  border-radius: 10px;
+  padding: 40px;
+}
+
+/* ===== CÍM ===== */
+.garancia-title {
+  font-size: 30px;
+  color: #a0f0ff;
+  margin-bottom: 20px;
+}
+
+/* ===== GARANCIA FELTÉTELEK ===== */
+.garancia-feltetelek {
+  background: #0f1a24;
+  border: 1px solid #2a4a5a;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.feltetelek-title {
+  font-size: 20px;
+  color: #a0f0ff;
+  margin-bottom: 15px;
+}
+
+.feltetelek-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feltetelek-list li {
+  color: #4caf50;
+  margin-bottom: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.feltetelek-list li::before {
+  content: "✅";
+  margin-right: 8px;
+}
+
+/* ===== SUCCESS ===== */
+.success-message {
+  border: 1px solid #4caf50;
+  color: #4caf50;
+  padding: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ===== FORM SZEKCIÓ ===== */
+.form-section {
+  margin-top: 10px;
+}
+
+.form-title {
+  font-size: 20px;
+  color: #a0f0ff;
+  margin-bottom: 20px;
+}
+
+/* ===== FORM ===== */
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #a0f0ff;
+  font-size: 14px;
+}
+
+/* INPUTOK */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid #2a4a5a;
+  color: #fff;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #66f0ff;
+}
+
+/* DATE INPUT SPECIÁLIS STÍLUS */
+.form-group input[type="date"] {
+  color-scheme: dark;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.6);
+  cursor: pointer;
+}
+
+/* TEXTAREA */
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ===== GOMB ===== */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #66f0ff;
+  background: transparent;
+  color: #66f0ff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background: #66f0ff;
+  color: #0f1a24;
+}
+
+/* ===== RESZPONZÍV ===== */
+@media (max-width: 768px) {
+  .garancia-container {
+    margin: 30px 16px;
+    padding: 0;
+  }
+
+  .garancia-card {
+    padding: 24px;
+  }
+
+  .garancia-title {
+    font-size: 24px;
+  }
+
+  .feltetelek-title,
+  .form-title {
+    font-size: 18px;
+  }
+
+  .feltetelek-list li {
+    font-size: 12px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .submit-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* KIS KÉPERNYŐKRE */
+@media (max-width: 480px) {
+  .garancia-card {
+    padding: 20px;
+  }
+
+  .garancia-title {
+    font-size: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+}
